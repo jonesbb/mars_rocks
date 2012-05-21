@@ -22,11 +22,9 @@
   
 
   <div class="field">
-    <%= f.label :quantity, "How many pounds (measured in Earth g's) do you want?" %>
-    <%= select_tag( :quantity, options_for_select([['1 pound', 1], ['2 pounds', 2]])) %>
+    <%= f.label :quantity, "How many pounds (measured in Earth g's) do you want?  Limit 5 lbs." %>
+    <%= f.select 'quantity', [['1 pound', 1], ['2 pounds', 2], ['3 pounds', 3], ['4 pounds', 4], ['5 pounds', 5]] %>
   </div>
-
-  
 
 <!-- using _tag instead of using form builder b/c aren't attributes in user model and don't want to submit
        them to the application. -->

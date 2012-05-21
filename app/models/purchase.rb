@@ -1,15 +1,15 @@
 class Purchase < ActiveRecord::Base
-  attr_accessible :email, :name, :amount, :quantity, :stripe_card_token
+  attr_accessible :email, :name, :cost, :quantity, :stripe_card_token
   
   attr_accessor :stripe_card_token
   
   def save_with_payment
     if valid?
-      logger.debug "DEBUG: Quantity is: #{self.quantity}"
-      self.amount = 50
-      logger.debug "DEBUG: amount is: #{amount}"
-      customer = Stripe::Charge.create(amount: amount, currency: "usd", card: stripe_card_token, description: email)
-      self.stripe_customer_token = customer.id
+      # cost is 50 cents/lb calculated here
+      self.cost = 50 * quantity
+      logger.debug "DEBUG: amount is: #{cost}"
+      customer = Stripe::Charge.create(amount: cost, currency: "usd", card: stripe_card_token, description: email)
+      #self.stripe_customer_token = customer.id
       save!
     end
   rescue Stripe::InvalidRequestError => e

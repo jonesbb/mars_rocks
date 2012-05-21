@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520232952) do
+ActiveRecord::Schema.define(:version => 20120521022750) do
 
   create_table "purchases", :force => true do |t|
     t.float    "amount"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120520232952) do
     t.string   "stripe_customer_token"
     t.string   "email"
     t.string   "name"
+    t.integer  "cost"
   end
 
   create_table "users", :force => true do |t|
