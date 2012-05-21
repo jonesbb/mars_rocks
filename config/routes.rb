@@ -1,5 +1,10 @@
 MarsRocks::Application.routes.draw do
+
   root to: 'users#index'
+  
+  match '/faq', :to => 'static_pages#faq'
+  match '/contact', :to => 'static_pages#contact'
+
   resources :purchases
   resources :users
   
