@@ -1,15 +1,54 @@
-<%= form_for @purchase, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :amount, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :amount, :class => 'text_field' %>
+<%= form_for @purchase, :html => { :class => 'form-vertical' }, :url => { :action => :create } do |f| %>
+
+  <% if @purchase.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
-  <div class="control-group">
-    <%= f.label :quantity, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :quantity, :class => 'number_field' %>
-    </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  
+
+  <div class="field">
+    <%= f.label :quantity, "How many pounds (measured in Earth g's) do you want?" %>
+    <%= select_tag( :quantity, options_for_select([['1 pound', 1], ['2 pounds', 2]])) %>
+  </div>
+
+  
+
+<!-- using _tag instead of using form builder b/c aren't attributes in user model and don't want to submit
+       them to the application. -->
+       
+  <%= f.hidden_field :stripe_card_token %>
+  
+  <div class="field">
+    <%= label_tag :card_number, "Credit Card Number" %>
+    <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
+  
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
 
   <div class="form-actions">

@@ -43,7 +43,7 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new(params[:purchase])
 
     respond_to do |format|
-      if @purchase.save
+      if @purchase.save_with_payment
         format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
         format.json { render json: @purchase, status: :created, location: @purchase }
       else
