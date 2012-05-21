@@ -1,7 +1,8 @@
 MarsRocks::Application.routes.draw do
-  root to: 'purchases#index'
+  root to: 'users#index'
   resources :purchases
   resources :users
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

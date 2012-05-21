@@ -1,5 +1,5 @@
 <%- model_class = Purchase.new.class -%>
-<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1>Owners of Mars Rocks</h1>
 <div id="notice"><%= notice %></div>
 <table class="table table-striped">
   <thead>
@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:cost) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Date</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
     <% @purchases.each do |purchase| %>
       <tr>
         <td><%= link_to purchase.id, purchase_path(purchase) %></td>
-        <td><%= purchase.cost %></td>
-        <td><%= purchase.quantity %></td>
+        <td>$<%= purchase.amount %></td>
+        <td><%= purchase.quantity %> lbs</td>
         <td><%= purchase.email %></td>
         <td><%=l purchase.created_at %></td>
         <td>

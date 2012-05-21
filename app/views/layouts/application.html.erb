@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mars Rocks</title>
+  <title>Mars Rocks for Sale</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
   <%= csrf_meta_tags %>
@@ -21,7 +21,8 @@
         <a class="brand" href="<%= root_url%>">Mars Rocks</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Purchase", purchases_path %></li>
+            <li><%= link_to "Purchase", new_purchase_path %></li>
+            <li><%= link_to "Owners", purchases_path %></li>
           </ul>
         </div>
       </div>
@@ -32,10 +33,18 @@
   <div class="row">
       <div class="span9"><%= yield %></div>
       <div class="span3">
+          <ul class="thumbnails">
+          <li class="span3">
+            <div class="thumbnail">
+              <img src=/assets/opportunity-burns-cliff.png alt="">
+              <h5>Burns Cliff, Endurance Crater</h5>
+            </div>
+          </ul>
         <h2>About</h2>
-        Rails 3.2 app using twitter-bootstrap and playing around with Stripe.
+        Rails 3.1 app using twitter-bootstrap, and accepting payments through Stripe.js and Stripe's ruby API. </br><i>Using Test mode, so your card will not be charged at this time.</i>
       </div>
     </div>
   </div>
 </body>
 </html>
+  
