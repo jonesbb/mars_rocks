@@ -16,8 +16,6 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               purchases_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_purchase_path(@purchase), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               purchase_path(@purchase),
               :method => 'delete',
