@@ -2,3 +2,15 @@ This is a demo app.
 
 Rails 3.1 app using bootstrap web design templating. Accepting secure payments through Stripe.js and Stripe's ruby API.
 Using Test mode, so your card will not be charged if you enter it.
+
+Live version here:
+http://growing-dusk-7109.heroku.com/
+
+Bootstrap
+http://twitter.github.com/bootstrap/index.html
+
+Stripe API documentation
+https://stripe.com/docs/api?lang=ruby
+
+Notes on adding secret keys to Heroku
+https://devcenter.heroku.com/articles/config-vars
